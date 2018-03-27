@@ -49,8 +49,8 @@ if ($id === 0) {
         $trip1->stage = 'Requested';
         $trip1->dateStart = null;
         $trip1->dateEnd = null;
-        $trip1->dateCreated = date('Y-m-d H:i:s', strtotime('-7 minutes'));
-        $trip1->dateUpdated = date('Y-m-d H:i:s', strtotime('-7 minutes'));
+        $trip1->datecreated = date('Y-m-d H:i:s', strtotime('-7 minutes'));
+        $trip1->datemodified = date('Y-m-d H:i:s', strtotime('-7 minutes'));
         array_push($response, $trip1);
     }
 
@@ -68,8 +68,8 @@ if ($id === 0) {
         $trip2->stage = 'Allocated';
         $trip2->dateStart = null;
         $trip2->dateEnd = null;
-        $trip2->dateCreated = date('Y-m-d H:i:s', strtotime('-4 minutes'));
-        $trip2->dateUpdated = date('Y-m-d H:i:s', strtotime('-2 minutes'));
+        $trip2->datecreated = date('Y-m-d H:i:s', strtotime('-4 minutes'));
+        $trip2->datemodified = date('Y-m-d H:i:s', strtotime('-2 minutes'));
         array_push($response, $trip2);
     }
 
@@ -87,8 +87,8 @@ if ($id === 0) {
         $trip3->stage = 'Ongoing';
         $trip3->dateStart = date('Y-m-d H:i:s', strtotime('-10 minutes'));
         $trip3->dateEnd = null;
-        $trip3->dateCreated = date('Y-m-d H:i:s', strtotime('-15 minutes'));
-        $trip3->dateUpdated = date('Y-m-d H:i:s', strtotime('-2 minutes'));
+        $trip3->datecreated = date('Y-m-d H:i:s', strtotime('-15 minutes'));
+        $trip3->datemodified = date('Y-m-d H:i:s', strtotime('-2 minutes'));
         array_push($response, $trip3);
     }
 
@@ -106,8 +106,8 @@ if ($id === 0) {
         $trip4->stage = 'Completed';
         $trip4->dateStart = date('Y-m-d H:i:s', strtotime('-40 minutes'));
         $trip4->dateEnd = date('Y-m-d H:i:s');
-        $trip4->dateCreated = date('Y-m-d H:i:s', strtotime('-45 minutes'));
-        $trip4->dateUpdated = date('Y-m-d H:i:s');
+        $trip4->datecreated = date('Y-m-d H:i:s', strtotime('-45 minutes'));
+        $trip4->datemodified = date('Y-m-d H:i:s');
         array_push($response, $trip4);
     }
 
@@ -125,8 +125,8 @@ if ($id === 0) {
         $trip5->stage = 'Cancelled';
         $trip5->dateStart = null;
         $trip5->dateEnd = null;
-        $trip5->dateCreated = date('Y-m-d H:i:s', strtotime('-5 minutes'));
-        $trip5->dateUpdated = date('Y-m-d H:i:s', strtotime('-3 minutes'));
+        $trip5->datecreated = date('Y-m-d H:i:s', strtotime('-5 minutes'));
+        $trip5->datemodified = date('Y-m-d H:i:s', strtotime('-3 minutes'));
         array_push($response, $trip5);
     }
 
@@ -158,8 +158,8 @@ if ($id === 0) {
         $trip->stage = 'Requested';
         $trip->dateStart = null;
         $trip->dateEnd = null;
-        $trip->dateCreated = date('Y-m-d H:i:s', strtotime('-5 minutes'));
-        $trip->dateCreated = date('Y-m-d H:i:s', strtotime('-5 minutes'));
+        $trip->datecreated = date('Y-m-d H:i:s', strtotime('-5 minutes'));
+        $trip->datecreated = date('Y-m-d H:i:s', strtotime('-5 minutes'));
 
         // Reply with successful response
         header('HTTP/1.1 200 OK');

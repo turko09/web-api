@@ -41,8 +41,8 @@ Trip API contains operations for allocating trips and updating trips' status.
 |stage|string||
 |dateStart|datetime||
 |dateEnd|datetime||
-|dateCreated|datetime||
-|dateUpdated|datetime||
+|datecreated|datetime||
+|datemodified|datetime||
 
 ### SAMPLES
 
@@ -74,8 +74,8 @@ Status: 200
     "stage": "Requested",
     "dateStart": null,
     "dateEnd": null,
-    "dateCreated": "2018-03-24 11:47:49",
-    "dateUpdated": null
+    "datecreated": "2018-03-24 11:47:49",
+    "datemodified": null
 }
 ~~~~
 
@@ -115,8 +115,8 @@ Status: 200
 |stage|string||
 |dateStart|datetime||
 |dateEnd|datetime||
-|dateCreated|datetime||
-|dateUpdated|datetime||
+|datecreated|datetime||
+|datemodified|datetime||
 
 ### SAMPLES
 
@@ -149,8 +149,8 @@ Status: 200
         "stage": "Requested",
         "dateStart": null,
         "dateEnd": null,
-        "dateCreated": "2018-03-24 11:40:03",
-        "dateUpdated": "2018-03-24 11:40:03"
+        "datecreated": "2018-03-24 11:40:03",
+        "datemodified": "2018-03-24 11:40:03"
     },
     {
         "id": 2,
@@ -165,8 +165,8 @@ Status: 200
         "stage": "Allocated",
         "dateStart": null,
         "dateEnd": null,
-        "dateCreated": "2018-03-24 11:43:03",
-        "dateUpdated": "2018-03-24 11:45:03"
+        "datecreated": "2018-03-24 11:43:03",
+        "datemodified": "2018-03-24 11:45:03"
     },
     {
         "id": 3,
@@ -181,8 +181,8 @@ Status: 200
         "stage": "Ongoing",
         "dateStart": "2018-03-24 11:37:03",
         "dateEnd": null,
-        "dateCreated": "2018-03-24 11:32:03",
-        "dateUpdated": "2018-03-24 11:45:03"
+        "datecreated": "2018-03-24 11:32:03",
+        "datemodified": "2018-03-24 11:45:03"
     },
     {
         "id": 4,
@@ -197,8 +197,8 @@ Status: 200
         "stage": "Completed",
         "dateStart": "2018-03-24 11:07:03",
         "dateEnd": "2018-03-24 11:47:03",
-        "dateCreated": "2018-03-24 11:02:03",
-        "dateUpdated": "2018-03-24 11:47:03"
+        "datecreated": "2018-03-24 11:02:03",
+        "datemodified": "2018-03-24 11:47:03"
     },
     {
         "id": 5,
@@ -213,8 +213,8 @@ Status: 200
         "stage": "Cancelled",
         "dateStart": null,
         "dateEnd": null,
-        "dateCreated": "2018-03-24 11:42:03",
-        "dateUpdated": "2018-03-24 11:44:03"
+        "datecreated": "2018-03-24 11:42:03",
+        "datemodified": "2018-03-24 11:44:03"
     }
 ]
 ~~~~
@@ -260,8 +260,8 @@ Status: 200
 |stage|string||
 |dateStart|datetime||
 |dateEnd|datetime||
-|dateCreated|datetime||
-|dateUpdated|datetime||
+|datecreated|datetime||
+|datemodified|datetime||
 
 ### SAMPLES
 
@@ -294,8 +294,8 @@ Status: 200
         "stage": "Ongoing",
         "dateStart": "2018-03-24 11:48:54",
         "dateEnd": null,
-        "dateCreated": "2018-03-24 11:43:54",
-        "dateUpdated": "2018-03-24 11:56:54"
+        "datecreated": "2018-03-24 11:43:54",
+        "datemodified": "2018-03-24 11:56:54"
     }
 ]
 ~~~~

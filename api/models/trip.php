@@ -15,6 +15,6 @@ class Trip
     public $stage;
     public $dateStart;
     public $dateEnd;
-    public $dateCreated;
-    public $dateUpdated;
+    public $datecreated;
+    public $datemodified;
 }

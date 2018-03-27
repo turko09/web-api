@@ -4,7 +4,7 @@ namespace TeamAlpha\Web;
 class DriverDocumentListItem
 {
     public $id;
-    public $driverId;
+    public $driverid;
     public $description;
     public $type;
 
@@ -12,7 +12,7 @@ class DriverDocumentListItem
     {
         if ($data !== null) {
             $this->id = (int) $data['id'] ?? 0;
-            $this->driverId = (int) $data['driverid'] ?? 0;
+            $this->driverid = (int) $data['driverid'] ?? 0;
             $this->description = $data['description'] ?? null;
             $this->type = $data['type'] ?? null;
         }

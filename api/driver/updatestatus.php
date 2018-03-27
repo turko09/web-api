@@ -82,7 +82,7 @@ if (is_null($input)) {
             }
 
             // Reply with successful response
-            Http::ReturnSuccess(array('message' => 'Driver status updated.', 'driverId' => $input->id));
+            Http::ReturnSuccess(array('message' => 'Driver status updated.', 'id' => $input->id));
         }
     } catch (PDOException $pe) {
         Db::ReturnDbError($pe);

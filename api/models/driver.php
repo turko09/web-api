@@ -13,8 +13,8 @@ class Driver
     public $verified;
     public $blocked;
     public $photo;
-    public $dateCreated;
-    public $dateModified;
+    public $datecreated;
+    public $datemodified;
 
     public function __construct(array $data)
     {
@@ -29,8 +29,8 @@ class Driver
             $this->verified = (int) $data['verified'] ?? 0;
             $this->blocked = (int) $data['blocked'] ?? 0;
             $this->photo = $data['photo'] ?? null;
-            $this->dateCreated = $data['datecreated'] ?? null;
-            $this->dateModified = $data['datemodified'] ?? null;
+            $this->datecreated = $data['datecreated'] ?? null;
+            $this->datemodified = $data['datemodified'] ?? null;
         }
     }
 

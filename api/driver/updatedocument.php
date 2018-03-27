@@ -53,7 +53,7 @@ if (is_null($input)) {
             $db->commit();
 
             // Reply with successful response
-            Http::ReturnSuccess(array('message' => 'Driver document updated.', 'driverDocumentId' => $input->id));
+            Http::ReturnSuccess(array('message' => 'Driver document updated.', 'id' => $input->id));
         }
     } catch (PDOException $pe) {
         Db::ReturnDbError($pe);

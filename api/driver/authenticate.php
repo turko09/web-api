@@ -54,7 +54,7 @@ if (is_null($input)) {
                 Http::ReturnError(401, array('message' => 'Account is blocked.'));
             } else {
                 if(password_verify($input->password, $record['password'])) {
-                    Http::ReturnSuccess(array('message' => 'Authentication success.', 'driverId' => $record['id']));
+                    Http::ReturnSuccess(array('message' => 'Authentication success.', 'id' => $record['id']));
                 } else {
                     Http::ReturnError(401, array('message' => 'Invalid email / mobile and password.'));
                 }

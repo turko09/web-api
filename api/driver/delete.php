@@ -48,7 +48,7 @@ if (is_null($input)) {
             $db->commit();
 
             // Reply with successful response
-            Http::ReturnSuccess(array('message' => 'Driver deleted.', 'driverId' => $input->id));
+            Http::ReturnSuccess(array('message' => 'Driver deleted.', 'id' => $input->id));
         }
     } catch (PDOException $pe) {
         Db::ReturnDbError($pe);
