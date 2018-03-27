@@ -1,1 +1,0 @@
-This is where the front-end PHP and static artefacts should reside
