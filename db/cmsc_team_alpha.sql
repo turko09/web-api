@@ -120,6 +120,7 @@ CREATE TABLE IF NOT EXISTS `passenger` (
   `password` varchar(250) NOT NULL,
   `address` varchar(50) NOT NULL,
   `mobile` varchar(12) NOT NULL,
+  `panicmobile` varchar(12) NOT NULL,
   `active` tinyint(4) NOT NULL,
   `verified` tinyint(4) NOT NULL,
   `blocked` tinyint(4) NOT NULL,
