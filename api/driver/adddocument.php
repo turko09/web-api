@@ -45,7 +45,7 @@ if (is_null($input)) {
         $db->commit();
 
         // Reply with successful response
-        Http::ReturnCreated('/api/driver/getdocument.php?id=' . $id, array('message' => 'Driver document added.', 'driverDocumentId' => $id));
+        Http::ReturnCreated('/api/driver/getdocument.php?id=' . $id, array('message' => 'Driver document added.', 'id' => (int) $id));
     } catch (PDOException $pe) {
         Db::ReturnDbError($pe);
     } catch (Exception $e) {

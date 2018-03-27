@@ -52,7 +52,7 @@ if (is_null($input)) {
         $db->commit();
 
         // Reply with successful response
-        Http::ReturnCreated('/api/driver/get.php?id=' . $id, array('message' => 'Driver registered.', 'id' => $id));
+        Http::ReturnCreated('/api/driver/get.php?id=' . $id, array('message' => 'Driver registered.', 'id' => (int) $id));
     } catch (PDOException $pe) {
         Db::ReturnDbError($pe);
     } catch (Exception $e) {

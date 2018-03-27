@@ -69,7 +69,7 @@ Status: 201
 
 {
     "message": "Driver registered.",
-    "id": "1"
+    "id": 1
 }
 ~~~~
 
@@ -484,7 +484,7 @@ Status: 201
 
 {
     "message": "Driver document added.",
-    "id": "1"
+    "id": 1
 }
 ~~~~
 
@@ -657,7 +657,7 @@ Status: 200
 |Member|Data Type|Comment|
 |--|--|--|
 |message|string||
-|driverDocumentId|numeric|Present only if operation is successful|
+|id|numeric|Present only if operation is successful|
 
 ### SAMPLES
 
@@ -686,7 +686,7 @@ Status: 200
 
 {
     "message": "Driver document updated.",
-    "driverid": 1
+    "id": 1
 }
 ~~~~
 
