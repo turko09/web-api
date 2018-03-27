@@ -1,5 +1,5 @@
 stages:
-  - name: deploy
+  - name: after_success
     if: branch = master
 
 language: php
@@ -12,7 +12,7 @@ install:
 
 script: skip
 
-deploy:
+after_success:
   #- "find vendor -type f -exec curl --ftp-create-dirs -T {} -u $FTP_USER:$FTP_PASSWORD ftp://files.000webhost.com/public_html/{} \\;"
   - "find api -type f -exec curl --ftp-create-dirs -T {} -u $FTP_USER:$FTP_PASSWORD ftp://files.000webhost.com/public_html/{} \\;"
 
