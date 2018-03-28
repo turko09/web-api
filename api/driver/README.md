@@ -2,6 +2,8 @@
 Driver API contains operations for manipulating driver information including registering a new one, uploading files related to them, getting drivers, updating them, and deleting them.
 
 
+<details><summary>Registering a new driver</summary>
+
 ## Registering a new driver:
 
 ### ENDPOINT
@@ -73,6 +75,11 @@ Status: 201
 }
 ~~~~
 
+
+</details>
+
+
+<details><summary>Getting a driver (Detailed Response)</summary>
 
 ## Getting a driver (Detailed Response):
 
@@ -148,6 +155,11 @@ Status: 200
 ~~~~
 
 
+</details>
+
+
+<details><summary>Getting drivers list</summary>
+
 ## Getting drivers list:
 
 ### ENDPOINT
@@ -221,6 +233,11 @@ Status: 200
 ]
 ~~~~
 
+
+</details>
+
+
+<details><summary>Updating a driver</summary>
 
 ## Updating a driver:
 
@@ -296,6 +313,11 @@ Status: 200
 ~~~~
 
 
+</details>
+
+
+<details><summary>Updating driver's status</summary>
+
 ## Updating driver's status:
 
 ### ENDPOINT
@@ -362,6 +384,11 @@ Status: 200
 ~~~~
 
 
+</details>
+
+
+<details><summary>Deleting a driver</summary>
+
 ## Deleting a driver:
 
 ### ENDPOINT
@@ -422,6 +449,11 @@ Status: 200
 }
 ~~~~
 
+
+</details>
+
+
+<details><summary>Adding a new document</summary>
 
 ## Adding a new document:
 
@@ -489,6 +521,11 @@ Status: 201
 ~~~~
 
 
+</details>
+
+
+<details><summary>Getting a document (Detailed Response)</summary>
+
 ## Getting a document (Detailed Response):
 
 ### ENDPOINT
@@ -553,6 +590,11 @@ Status: 200
 }
 ~~~~
 
+
+</details>
+
+
+<details><summary>Getting documents list</summary>
 
 ## Getting documents list:
 
@@ -623,6 +665,11 @@ Status: 200
 ~~~~
 
 
+</details>
+
+
+<details><summary>Updating a document</summary>
+
 ## Updating a document:
 
 ### ENDPOINT
@@ -691,6 +738,11 @@ Status: 200
 ~~~~
 
 
+</details>
+
+
+<details><summary>Deleting a document</summary>
+
 ## Deleting a document:
 
 ### ENDPOINT
@@ -750,6 +802,11 @@ Status: 200
 }
 ~~~~
 
+
+</details>
+
+
+<details><summary>Authenticating a driver's credentials</summary>
 
 ## Authenticating a driver's credentials:
 
@@ -815,3 +872,6 @@ Status: 200
     "id": "1"
 }
 ~~~~
+
+
+</details>
