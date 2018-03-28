@@ -2,7 +2,9 @@
 Vehicle API contains operations for managing the vehicle assigned to a driver.
 
 
-<details>## Adding a vehicle to a driver:
+<details><summary>Adding a vehicle to a driver</summary>
+
+## Adding a vehicle to a driver:
 
 ### ENDPOINT
 `[website base address]/api/vehicle/add.php`
@@ -77,7 +79,9 @@ Status: 201
 </details>
 
 
-<details>## Getting a vehicle (Detailed Response):
+<details><summary>Getting a vehicle (Detailed Response)</summary>
+
+## Getting a vehicle (Detailed Response):
 
 ### ENDPOINT
 `[website base address]/api/vehicle/get.php`
@@ -159,7 +163,9 @@ Status: 200
 </details>
 
 
-<details>## Getting vehicle list:
+<details><summary>Getting vehicle list</summary>
+
+## Getting vehicle list:
 
 ### ENDPOINT
 `[website base address]/api/vehicle/get.php`
@@ -239,7 +245,9 @@ Status: 200
 </details>
 
 
-<details>## Updating a vehicle:
+<details><summary>Updating a vehicle</summary>
+
+## Updating a vehicle:
 
 ### ENDPOINT
 `[website base address]/api/vehicle/update.php`
@@ -316,7 +324,9 @@ Status: 200
 </details>
 
 
-<details>## Updating vehicle's status:
+<details><summary>Updating vehicle's status</summary>
+
+## Updating vehicle's status:
 
 ### ENDPOINT
 `[website base address]/api/vehicle/updatestatus.php`
@@ -384,7 +394,9 @@ Status: 200
 </details>
 
 
-<details>## Setting a vehicle's location:
+<details><summary>Setting vehicle's location</summary>
+
+## Setting vehicle's location:
 
 ### ENDPOINT
 `[website base address]/api/vehicle/setlocation.php`
@@ -451,7 +463,9 @@ Status: 200
 </details>
 
 
-<details>## Deleting a vehicle:
+<details><summary>Deleting a vehicle</summary>
+
+## Deleting a vehicle:
 
 ### ENDPOINT
 `[website base address]/api/vehicle/delete.php`
