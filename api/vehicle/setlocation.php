@@ -36,10 +36,13 @@ if (is_null($input)) {
             Http::ReturnError(404, array('message' => 'Vehicle not found.'));
         } else {
             // Create Db object
-            $db = new Db('DELETE FROM `vehicle` WHERE id = :id');
+            $db = new Db('UPDATE `vehicle` SET locationlat = :locationlat, locationlong = :locationlong, datemodified = :datemodified WHERE id = :id');
 
-            // Bind parameters
+            // Bind parameters            
             $db->bindParam(':id', property_exists($input, 'id') ? $input->id : 0);
+            $db->bindParam(':locationlat', property_exists($input, 'locationlat') ? $input->locationlat : 0);
+            $db->bindParam(':locationlong', property_exists($input, 'locationlong') ? $input->locationlong : 0);
+            $db->bindParam(':datemodified', date('Y-m-d H:i:s'));
 
             // Execute
             $db->execute();
@@ -48,7 +51,7 @@ if (is_null($input)) {
             $db->commit();
 
             // Reply with successful response
-            Http::ReturnSuccess(array('message' => 'Vehicle deleted.', 'id' => $input->id));
+            Http::ReturnSuccess(array('message' => 'Vehicle location updated.', 'id' => $input->id));
         }
     } catch (PDOException $pe) {
         Db::ReturnDbError($pe);

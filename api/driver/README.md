@@ -37,7 +37,7 @@ Driver API contains operations for manipulating driver information including reg
 |Member|Data Type|Comment|
 |--|--|--|
 |message|string||
-|id|numeric|Present only if operation is successful|
+|id|numeric|The driver id. Present only if operation is successful|
 
 ### SAMPLES
 
@@ -455,7 +455,7 @@ Status: 200
 |Member|Data Type|Comment|
 |--|--|--|
 |message|string||
-|id|numeric|Present only if operation is successful|
+|id|numeric|The document id. Present only if operation is successful|
 
 ### SAMPLES
 
