@@ -61,7 +61,7 @@ class Db
     {
         // Reply with error reponse
         $errorCode = $pe->getCode();
-        if ((string) $errorCode === '23000') {
+        if ((string) $errorCode === '23000' || (string) $errorCode === '22001') {
             $errorInfo = $pe->errorInfo;
             Http::ReturnError(400, array('message' => $errorInfo[2]));
         } else if ((string) $errorCode === '2002') {

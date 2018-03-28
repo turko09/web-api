@@ -11,7 +11,7 @@ class VehicleListItem
     public $model;
     public $color;
     public $active;
-    public $free;
+    public $available;
     public $locationlat;
     public $locationlong;
     
@@ -26,7 +26,7 @@ class VehicleListItem
             $this->model = $data['model'] ?? null;
             $this->color = $data['color'] ?? null;
             $this->active = (int) $data['active'] ?? 0;
-            $this->free = (int) $data['free'] ?? 0;
+            $this->available = (int) $data['available'] ?? 0;
             $this->locationlat = (double) $data['locationlat'] ?? 0;
             $this->locationlong = (double) $data['locationlong'] ?? 0;
         }

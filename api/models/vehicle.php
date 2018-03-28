@@ -12,7 +12,7 @@ class Vehicle
     public $color;
     public $photo;
     public $active;
-    public $free;
+    public $available;
     public $locationlat;
     public $locationlong;
     public $datecreated;
@@ -30,7 +30,7 @@ class Vehicle
             $this->color = $data['color'] ?? null;
             $this->photo = $data['photo'] ?? null;
             $this->active = (int) $data['active'] ?? 0;
-            $this->free = (int) $data['free'] ?? 0;
+            $this->available = (int) $data['available'] ?? 0;
             $this->locationlat = (double) $data['locationlat'] ?? 0;
             $this->locationlong = (double) $data['locationlong'] ?? 0;
             $this->datecreated = $data['datecreated'] ?? null;

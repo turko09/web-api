@@ -21,14 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Extract request body
 $input = json_decode(file_get_contents("php://input"));
 
-if (is_null($data)) {
+if (is_null($input)) {
     // Request body is null
     Http::ReturnError(400, array('message' => 'Vehicle details are empty.'));
 } else {
     try {
         // Create Db object
-        $db = new Db('INSERT INTO `vehicle` (driverid, plateno, type, make, model, color, photo, active, free, locationlat, locationlong, datecreated, datemodified)
-                                VALUES (:driverid, :plateno, :type, :make, :model, :color, :photo, :active, :free, :locationlat, :locationlong, :datecreated, :datemodified)');
+        $db = new Db('INSERT INTO `vehicle` (driverid, plateno, type, make, model, color, photo, active, available, locationlat, locationlong, datecreated, datemodified)
+                                VALUES (:driverid, :plateno, :type, :make, :model, :color, :photo, :active, :available, :locationlat, :locationlong, :datecreated, :datemodified)');
 
         // Bind parameters
         $db->bindParam(':driverid', property_exists($input, 'driverid') ? $input->driverid : null);
@@ -39,7 +39,7 @@ if (is_null($data)) {
         $db->bindParam(':color', property_exists($input, 'color') ? $input->color : null);
         $db->bindParam(':photo', property_exists($input, 'photo') ? $input->photo : null);
         $db->bindParam(':active', 0);
-        $db->bindParam(':free', 0);
+        $db->bindParam(':available', 0);
         $db->bindParam(':locationlat', null);
         $db->bindParam(':locationlong', null);
         $db->bindParam(':datecreated', date('Y-m-d H:i:s'));

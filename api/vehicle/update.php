@@ -22,18 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $input = json_decode(file_get_contents("php://input"));
 
 if (is_null($input)) {
-    Http::ReturnError(400, array('message' => 'Driver details are empty.'));
+    Http::ReturnError(400, array('message' => 'Vehicle details are empty.'));
 } else {
     try {
         // Create Db object
-        $db = new Db('SELECT * FROM `driver` WHERE id = :id LIMIT 1');
+        $db = new Db('SELECT * FROM `vehicle` WHERE id = :id LIMIT 1');
 
         // Bind parameters
         $db->bindParam(':id', property_exists($input, 'id') ? $input->id : 0);
 
         // Execute
         if ($db->execute() === 0) {
-            Http::ReturnError(404, array('message' => 'Driver not found.'));
+            Http::ReturnError(404, array('message' => 'Vehicle not found.'));
         } else {
             // Create Db object
             $db = new Db('UPDATE `vehicle` SET driverid = :driverid, plateno = :plateno, type = :type, make = :make, model = :model, color = :color, photo = :photo, datemodified = :datemodified WHERE id = :id');
@@ -56,7 +56,7 @@ if (is_null($input)) {
             $db->commit();
 
             // Reply with successful response
-            Http::ReturnSuccess(array('message' => 'Vechile updated.', 'id' => $input->id));
+            Http::ReturnSuccess(array('message' => 'Vehicle updated.', 'id' => $input->id));
         }
     } catch (PDOException $pe) {
         Db::ReturnDbError($pe);

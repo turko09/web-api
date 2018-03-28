@@ -74,7 +74,7 @@ try {
         } else {
             // Driver document was found
             $record = $db->fetchAll()[0];
-            $vehicle = new Vechile($record);
+            $vehicle = new Vehicle($record);
 
             // Reply with successful response
             Http::ReturnSuccess($vehicle);
