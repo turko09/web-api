@@ -1,85 +1,87 @@
 <?php
 namespace TeamAlpha\Web;
 
-// HTTP headers for response
-header('Access-Control-Allow-Orgin: *');
-header("Access-Control-Allow-Methods: GET");
-header('Content-Type: application/json; charset=UTF-8');
-
+// Require classes
+require $_SERVER['DOCUMENT_ROOT'] . '/api/utils/db.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/api/utils/http.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/api/models/vehicle.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/api/models/vehiclelistitem.php';
+
+// Declare use on objects to be used
+use Exception;
+use PDOException;
+
+// HTTP headers for response
+Http::SetDefaultHeaders('GET');
 
 // Check if request method is correct
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
-    // Reply with error response
-    header('HTTP/1.1 405 Method Not Allowed');
-    echo json_encode(array('message' => 'Request method is not allowed.'));
+    Http::ReturnError(405, array('message' => 'Request method is not allowed.'));
     return;
 }
 
 $id = 0;
+$driverid = 0;
 
 // Extract request query string
 if (array_key_exists('id', $_GET)) {
     $id = intval($_GET['id']);
 }
+if (array_key_exists('driverid', $_GET)) {
+    $driverid = intval($_GET['driverid']);
+}
 
-if ($id === 0) {
-    // Id was not given
-    // Return all vehicles
+if ($id === 0 && $driverid === 0) {
+    Http::ReturnError(400, array('message' => 'Vehicle id or driver id was not provided.'));
+    return;
+}
 
-    // TO DO: Return of actual vehicles
+try {
+    if ($id === 0) {
+        // Id was not given
+        // Return all vehicles for a driver
 
-    $response = array();
+        // Create Db object
+        $db = new Db('SELECT * FROM `vehicle` WHERE driverid = :driverid');
 
-    $vehicle1 = new Vehicle();
-    $vehicle1->id = 1;
-    $vehicle1->make = 'honda';
-    $vehicle1->model = 'civic';
-    $vehicle1->color = 'white';
-	$vehicle1->platenumber = 'xmm562';
-    array_push($response, $vehicle1);
+        // Bind parameters
+        $db->bindParam(':driverid', $driverid);
 
-    $vehicle2 = new Vehicle();
-    $vehicle2->id = 2;
-    $vehicle2->make = 'toyota';
-    $vehicle2->model = 'vios';
-    $vehicle2->color = 'blue';
-	$vehicle2->platenumber = 'zah888';
-    array_push($response, $vehicle2);
+        $response = array();
 
-    $vehicle3 = new Vehicle();
-    $vehicle3->id = 3;
-    $vehicle3->make = 'ford';
-    $vehicle3->model = 'ecosport';
-    $vehicle3->color = 'blue';
-	$vehicle3->platenumber = 'nja4416';
-    array_push($response, $vehicle3);
-
-    // Reply with successul response
-    header('HTTP/1.1 200 OK');
-    echo json_encode($response);
-} else {
-    // TO DO: Actual check if vehicle exists
-    if ($id === 404) {
-        // Sample not found
-        // Reply with error response
-        header('HTTP/1.1 404 Not Found');
-        echo json_encode(array('message' => 'Vehicle not found.'));
-    } else {
-        // Vehicle was found
-
-        // TO DO: Return of actual vehicle
-
-        $vehicle = new Vehicle();
-        $vehicle->id = $id;
-        $vehicle->make = 'honda';
-        $vehicle->model = 'civic';
-        $vehicle->color = 'white';
-		$vehicle->platenumber = 'xmm562';
-
+        // Execute
+        if ($db->execute() > 0) {
+            // Drivers were found
+            $records = $db->fetchAll();
+            foreach ($records as &$record) {
+                $vehicle = new VehicleListItem($record);
+                array_push($response, $vehicle);
+            }
+        }
 
         // Reply with successful response
-        header('HTTP/1.1 200 OK');
-        echo json_encode($vehicle);
+        Http::ReturnSuccess($response);
+    } else {
+        // Create Db object
+        $db = new Db('SELECT * FROM `vehicle` WHERE id = :id LIMIT 1');
+
+        // Bind parameters
+        $db->bindParam(':id', $id);
+
+        // Execute
+        if ($db->execute() === 0) {
+            Http::ReturnError(404, array('message' => 'Vehicle not found.'));
+        } else {
+            // Driver document was found
+            $record = $db->fetchAll()[0];
+            $vehicle = new Vechile($record);
+
+            // Reply with successful response
+            Http::ReturnSuccess($vehicle);
+        }
     }
+} catch (PDOException $pe) {
+    Db::ReturnDbError($pe);
+} catch (Exception $e) {
+    Http::ReturnError(500, array('message' => 'Server error: ' . $e->getMessage() . '.'));
 }

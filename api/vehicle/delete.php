@@ -1,41 +1,58 @@
 <?php
 namespace TeamAlpha\Web;
 
-// HTTP headers for response
-header('Access-Control-Allow-Orgin: *');
-header('Access-Control-Allow-Methods: POST');
-header('Content-Type: application/json; charset=UTF-8');
+// Require classes
+require $_SERVER['DOCUMENT_ROOT'] . '/api/utils/db.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/api/utils/http.php';
 
-require $_SERVER['DOCUMENT_ROOT'] . '/api/models/vehicle.php';
+// Declare use on objects to be used
+use Exception;
+use PDOException;
+
+// Set default response headers
+Http::SetDefaultHeaders('POST');
 
 // Check if request method is correct
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    // Reply with error response
-    header('HTTP/1.1 405 Method Not Allowed');
-    echo json_encode(array('message' => 'Request method is not allowed.'));
+    Http::ReturnError(405, array('message' => 'Request method is not allowed.'));
     return;
 }
 
 // Extract request body
-$data = json_decode(file_get_contents("php://input"));
+$input = json_decode(file_get_contents("php://input"));
 
-if (is_null($data)) {
-    // Request body is null
-    // Reply with error response
-    header('HTTP/1.1 400 Bad Request');
-    echo json_encode(array('message' => 'Vehicle details are empty.'));
+if (is_null($input)) {
+    Http::ReturnError(400, array('message' => 'Vechile details are empty.'));
 } else {
-    // TO DO: Actual check if vehicle exists
-    if ($data->id === 404) {
-        // Sample not found
-        // Reply with error response
-        header('HTTP/1.1 404 Not Found');
-        echo json_encode(array('message' => 'Vehicle not found.'));
-    } else {
-        // TO DO: Actual delete
+    try {
+        // Create Db object
+        $db = new Db('SELECT * FROM `vechile` WHERE id = :id LIMIT 1');
 
-        // Reply with successful response
-        header('HTTP/1.1 200 OK');
-        echo json_encode(array('message' => 'Vehicle record deleted.', 'vehicleId' => $data->id));
+        // Bind parameters
+        $db->bindParam(':id', property_exists($input, 'id') ? $input->id : 0);
+
+        // Execute
+        if ($db->execute() === 0) {
+            Http::ReturnError(404, array('message' => 'Vehicle not found.'));
+        } else {
+            // Create Db object
+            $db = new Db('DELETE FROM `vehicle` WHERE id = :id');
+
+            // Bind parameters
+            $db->bindParam(':id', property_exists($input, 'id') ? $input->id : 0);
+
+            // Execute
+            $db->execute();
+
+            // Commit transaction
+            $db->commit();
+
+            // Reply with successful response
+            Http::ReturnSuccess(array('message' => 'Vechile deleted.', 'id' => $input->id));
+        }
+    } catch (PDOException $pe) {
+        Db::ReturnDbError($pe);
+    } catch (Exception $e) {
+        Http::ReturnError(500, array('message' => 'Server error: ' . $e->getMessage() . '.'));
     }
 }
